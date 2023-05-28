@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Time {
 
     public static void main(String[] args) {
@@ -11,19 +13,29 @@ public class Time {
 //    понятные фразы с информацией о том, сколько полных часов осталось до конца рабочего дня.
 //    Например: «осталось 7 часов», «осталось 4 часа», «остался 1 час», «осталось менее часа».
 
+        Random random = new Random();
+
+        timePanel(random.nextInt(0, 28801));
+        timePanel(3000);
     }
-//    private static void timePanel(int sec){
-//        System.out.println(sec);
-//
-//        int hours = 1;
-//       if (sec < 3600 )
-//
-//            while  (sec > 0){
-//                if (sec < 3600 ){
-//                    hours = 0;
-//                }
-//           sec / (3600 * hours);
+
+    private static void timePanel(int sec) {
+        System.out.println(sec);
+
+        if (sec < 3600) {
+            System.out.println("Осталось меньше часа");
+            return;
         }
+
+        int hours = 1;
+
+        while (sec > 3600) {
+
+            sec /= (3600 * hours);
+            hours++;
+        }
+        if (hours < 5) System.out.println("Осталось " + hours + " часa");
+        else System.out.println("Осталось " + hours + " часов");
 
 
     }
